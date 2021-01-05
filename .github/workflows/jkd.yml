@@ -4,7 +4,7 @@ name: 聚看点
 on:
   workflow_dispatch:
   schedule:
-     - cron: '*/20 */2 * * *'
+     - cron: '0,20,40 7-22/1 * * *'
   watch:
     types: started
 jobs:
@@ -25,9 +25,9 @@ jobs:
         run: |
           npm install
       - name: '运行 【聚看点】'
-        if: env.JUKAN_BODY
+        if: env.JKD_COOKIE
         run: |
-          node Task/jukan.js
+          node Task/jkd.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
